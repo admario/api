@@ -11,7 +11,6 @@ const app = express();
 const firebase = require("firebase");
 const admin = require("firebase-admin")
 const Auth = require('../utils/auth')
-const key = require("../utils/key")
 const swaggerUi = require('swagger-ui-express')
 
 const swaggerDocument = require("../utils/swagger.json")
@@ -27,7 +26,7 @@ firebase.auth().onAuthStateChanged((user) => {
 })
 
 admin.initializeApp({
-	credential: admin.credential.cert(key),
+	credential: admin.credential.cert(ENV['GOOGLE']),
 	databaseURL: 'https://adopets-930a4.firebaseio.com/'
   });
 
