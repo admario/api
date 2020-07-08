@@ -4,39 +4,29 @@ const logger = require("../../bin/logger")
 
 exports.register = (req, res, next) => {
     auth.createUserWithEmailAndPassword(req.body.email, req.body.password).then((data) => {
-        console.log('AAAAAAAAA', data)
-        console.log('CCCCCCCCC', data.user)
-        console.log('BBBBBBBB', data.err)
-        console.log('AAAAAAAAA', JSON.parse(data))
-        try {
-            if(!data.err) {
-                var user = JSON.parse(data).user
-                firebase.database().ref('users/' + user.uid).set({
-                    displayName: req.body.name,
-                  }, function(error) {
-                    if (error) {
-                        logger.error(error)
-                        res.status(400).send({
-                            message: error.message
-                        })
-                    } else {
-                        logger.info(req.body.name)
-                        res.status(201).send({
-                            user: req.body.name,
-                            message: "User created successfully"
-                        })
-                    }
-                  });
-                } else {
-                    logger.error(data.err)
+        if(!data.err) {
+            console.log('AAAAAAAAA', JSON.parse(data).user.uid)
+            var user = JSON.parse(data).user
+            firebase.database().ref('users/' + user.uid).set({
+                displayName: req.body.name,
+                }, function(error) {
+                if (error) {
+                    logger.error(error)
                     res.status(400).send({
-                        message: data.err
+                        message: error.message
+                    })
+                } else {
+                    logger.info(req.body.name)
+                    res.status(201).send({
+                        user: req.body.name,
+                        message: "User created successfully"
                     })
                 }
-        } catch (error) {
-            logger.error(error)
+                });
+        } else {
+            logger.error(data.err)
             res.status(400).send({
-                message: error
+                message: data.err
             })
         }
         
