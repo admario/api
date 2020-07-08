@@ -26,14 +26,12 @@ module.exports.SigUpWithEmailAndPassword = (email, password) => {
     } else {
       return {err: errorMessage}
     }
-    return {err: error}
   })
 }
 
 module.exports.createUserWithEmailAndPassword = (email, password) => {
   return firebase.auth().createUserWithEmailAndPassword(email, password)
   .then((user) => {
-    console.log("$$$$$$$$$$$$$", user)
     return user
   })
   .catch(function(error) {
