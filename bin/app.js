@@ -46,7 +46,6 @@ admin.initializeApp({
 moment.locale('pt-BR');
 
 app.use(function (req, res, next) {
-	console.log(req)
 	var user = firebase.auth().currentUser
 	if(req.path != "/api/login" && req.path.indexOf('/api-docs')){
 		if(!user) {
