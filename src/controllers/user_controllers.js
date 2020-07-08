@@ -4,9 +4,9 @@ const logger = require("../../bin/logger")
 
 exports.register = (req, res, next) => {
     auth.createUserWithEmailAndPassword(req.body.email, req.body.password).then((data) => {
-        console.log('%%%%%%%%%%%%%%%', data.user)
-        console.log('$$$$$$$$$$$$$$$', JSON.parse(data.user))
-        console.log('$$$$$$$$$$$$$$$', data.err)
+        console.log('CCCCCCCCC', data.user)
+        console.log('AAAAAAAAA', JSON.parse(data.user))
+        console.log('BBBBBBBB', data.err)
         try {
             if(!data.err) {
                 var user = JSON.parse(data).user
