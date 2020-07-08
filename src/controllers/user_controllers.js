@@ -16,6 +16,7 @@ exports.register = (req, res, next) => {
                         message: error.message
                     })
                 } else {
+                    logger.info(req.body.name)
                     res.status(201).send({
                         user: req.body.name,
                         message: "User created successfully"
@@ -29,7 +30,7 @@ exports.register = (req, res, next) => {
                 })
             }
     }).catch((error) => {
-        console.log(error.message)
+        logger.error(error.message)
     })
 }
 exports.login = (req, res, next) => {
