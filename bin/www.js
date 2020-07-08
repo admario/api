@@ -3,7 +3,7 @@ const env = require('../utils/environment');
 const debug = require('debug')('nodestr:server');
 const http = require('http');
 const logger = require(process.cwd() + '/bin/logger.js');
-const port = normalizaPort(env.config.SERVER_PORT);
+const port = normalizaPort(env.config.SERVER_PORT || '3000');
 
 
 app.set('port', port);
@@ -28,12 +28,12 @@ process.on('SIGINT', function () {
 
 
 function normalizaPort(val) {
-  const port = parseInt(val, 10);
-  if (isNaN(port)) {
+  const p = parseInt(val, 10);
+  if (isNaN(p)) {
     return val;
   }
-  if (port >= 0) {
-    return port;
+  if (p >= 0) {
+    return p;
   }
   return false;
 }
