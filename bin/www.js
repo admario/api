@@ -11,7 +11,7 @@ var server = http.createServer(app);
 
 logger.info("Starting Logs...");
 
-server.listen(process.env.PORT, '0.0.0.0,' () => {
+server.listen(process.env.PORT || 3000, () => {
   console.log('..............................................');
   logger.info('Server started!');
   logger.info(`Server started in: ${port}/`);
