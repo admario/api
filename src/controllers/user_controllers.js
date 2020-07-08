@@ -6,7 +6,7 @@ exports.register = (req, res, next) => {
     auth.createUserWithEmailAndPassword(req.body.email, req.body.password).then((data) => {
         if(!data.err) {
             console.log(data)
-            user = JSON.parse(data).user
+            let user = JSON.parse(data).user
             firebase.database().ref('users/' + user.uid).set({
                 displayName: req.body.name,
               }, function(error) {

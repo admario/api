@@ -1,7 +1,7 @@
 {
    "swagger": "2.0",
    "info": {
-     "title": "Blah",
+     "title": "Adopets Test",
      "description": "",
      "version": "1.0"
    },
@@ -13,20 +13,81 @@
          "operationId": "index",
          "tags": ["Login"],
          "parameters": [
-       { "name": "E-mail", "in": "body", "required": true, "type": "string" },
-       { "name": "Password", "in": "body", "type": "file", "required": "true" }],
+            { "name": "E-mail", "in": "body", "required": true, "type": "string" },
+            { "name": "Password", "in": "body", "type": "string", "required": true }],
          "responses": {}
        }
      },
-     "/bar": {
-		"get": {
-		  "x-swagger-router-controller": "bar",
-		  "operationId": "impossible",
-		  "tags": ["/test"],
-		  "description": "",
-		  "parameters": [],
-		  "responses": {}
-		}
-	  }
+     "/api/logout": {
+      "post": {
+        "x-swagger-router-controller": "bar",
+        "operationId": "index",
+        "tags": ["Logout"],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/user/register": {
+      "post": {
+        "x-swagger-router-controller": "home",
+        "operationId": "index",
+        "tags": ["User Register"],
+        "parameters": [
+          { "name": "E-mail", "in": "body", "required": true, "type": "string" },
+          { "name": "Password", "in": "body", "type": "string", "required": true },
+          { "name": "name", "in": "body", "required": true, "type": "string" }],
+        "responses": {}
+      }
+    },
+    "/api/products/register": {
+      "post": {
+        "x-swagger-router-controller": "home",
+        "operationId": "index",
+        "tags": ["Product Register"],
+        "parameters": [
+          { "name": "name", "in": "body", "required": true, "type": "string" },
+          { "name": "description", "in": "body", "type": "string", "required": true },
+          { "name": "category", "in": "body", "required": true, "type": "string" },
+          { "name": "price", "in": "body", "type": "string", "required": true },
+          { "name": "stock", "in": "body", "type": "integer", "required": true }],
+        "responses": {}
+      }
+    },
+    "/api/products/list": {
+      "post": {
+        "x-swagger-router-controller": "home",
+        "operationId": "index",
+        "tags": ["Products List"],
+        "parameters": [
+          { "name": "filter", "in": "body", "required": false, "type": "string" }],
+        "responses": {}
+      }
+    },
+    "/api/products/update": {
+      "put": {
+        "x-swagger-router-controller": "home",
+        "operationId": "index",
+        "tags": ["Product Update"],
+        "parameters": [
+          { "name": "uuid", "in": "quey", "required": true, "type": "string" },
+          { "name": "name", "in": "body", "required": true, "type": "string" },
+          { "name": "description", "in": "body", "type": "string", "required": true },
+          { "name": "category", "in": "body", "required": true, "type": "string" },
+          { "name": "price", "in": "body", "type": "string", "required": true },
+          { "name": "stock", "in": "body", "type": "integer", "required": true }],
+        "responses": {}
+      }
+    },
+    "/api/products/delete": {
+      "delete": {
+        "x-swagger-router-controller": "home",
+        "operationId": "index",
+        "tags": ["Product Delete"],
+        "parameters": [
+          { "name": "uuid", "in": "quey", "required": true, "type": "string" }],
+        "responses": {}
+      }
+    }
    }
 }
