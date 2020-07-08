@@ -50,7 +50,7 @@
           { "name": "description", "in": "body", "type": "string", "required": true },
           { "name": "category", "in": "body", "required": true, "type": "string" },
           { "name": "price", "in": "body", "type": "string", "required": true },
-          { "name": "stock", "in": "body", "type": "integer", "required": true }],
+          { "name": "stock", "in": "body", "type": "int", "required": true }],
         "responses": {}
       }
     },
@@ -75,7 +75,7 @@
           { "name": "description", "in": "body", "type": "string", "required": true },
           { "name": "category", "in": "body", "required": true, "type": "string" },
           { "name": "price", "in": "body", "type": "string", "required": true },
-          { "name": "stock", "in": "body", "type": "integer", "required": true }],
+          { "name": "stock", "in": "body", "type": "int", "required": true }],
         "responses": {}
       }
     },
