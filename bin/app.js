@@ -26,7 +26,7 @@ firebase.auth().onAuthStateChanged((user) => {
 })
 
 admin.initializeApp({
-	credential: admin.credential.cert(ENV['GOOGLE']),
+	credential: admin.credential.cert(process.env.GOOGLE),
 	databaseURL: 'https://adopets-930a4.firebaseio.com/'
   });
 
