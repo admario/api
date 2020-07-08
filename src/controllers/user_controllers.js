@@ -32,10 +32,10 @@ exports.register = (req, res, next) => {
                     })
                 }
         } catch (error) {
-            logger.error(data.err)
-                    res.status(400).send({
-                        message: data.err
-                    })
+            logger.error(error)
+            res.status(400).send({
+                message: error
+            })
         }
         
     }).catch((error) => {
