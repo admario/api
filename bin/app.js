@@ -38,7 +38,7 @@ var key = {
 	"client_x509_cert_url": process.env.client_x509_cert_url
   }
 
-Sadmin.initializeApp({
+admin.initializeApp({
 	credential: admin.credential.cert(key),
 	databaseURL: 'https://adopets-930a4.firebaseio.com/'
   });
